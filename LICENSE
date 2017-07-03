@@ -1,21 +1,7 @@
-MIT License
+This software with all of its components, including the sample datasets, are provided by its Contributors for educational and research purposes; the following conditions apply. By using this software or any of its component, you implicitly agree with this license.
 
-Copyright (c) 2017 adamkettinger
+1. This software and sample data are provided by the Contributors "as is" and any express or implied warranties are disclaimed. In no event shall the Contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+2. This software and sample data are provided for educational and research purpose only. This software may be freely used for non-commercial purpose, provided that appropriate credit for the original Contributors is given, including a link to the original version. You may redistribute your contributions to this software under the same license as the original, for non-commercial purposes, provided that the original Contributors are acknowledged and a link is included to the original version. Any commercial useage, modifications, and redistributions of this software and sample data are forbidden.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. This software was developed for research and educational purposes only, and should not in any case be used for medical diagnostic. The Contributors are not liable for any damages caused by or connected to usage of this software for medical purposes.
