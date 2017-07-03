@@ -1,0 +1,125 @@
+0. License
+==========
+
+See LICENSE file for licensing information
+
+------------------------------------------------------------------------
+
+
+This software was implemented to calculate the optimal phase distribution for parallel MRI acquisitions reconstructed by
+Virtual Coil GRAPPA as well as to design appropriate RF pulses to introduce the optimal phase. This software is intended for
+research and educational use only and not suitable for diagnostig use. No warranties are given. (see LICENSE for details).
+
+Please site the corresponding papers when using this tool (see References below)
+
+
+1. Help
+=======
+
+Please address all questions and comments to Adam Kettinger:
+
+kettinger.adam@gmail.com
+
+
+2. Installation and usage
+=========================
+
+Prerequisites:
+- Windows operating system (tested on 7 and 10). The software may also work with other OS but not tested.
+- Matlab R2015a or newer version. The software may also work with older version but not tested.
+- Parallel Computing Toolbox for Matlab
+
+Intallation:
+- Just download the whole package. all pathways and dependencies are defined within the used functions.
+
+
+Structure and file format:
+The three folders contain three separate parts:
+
+sample_data: sample datasets used in the manuscript (see References) .mat files that can be loaded directly into Matlab.
+both files contain two k-space dataset as Matlab matrices. Dimension order is [PE, read, channel] in these datasets.
+One .mat file contains two k-space data: one measured with conventional excitation (kspace_conv), and one measured with
+tailored excitation to introduce the optimal object phase for in-plane acceleration factor 8 in the given setup (kspace_opt).
+SE-EPI_rawdata.mat contains data that was measured with a segmented SE-EPI, while T1wSE_rawdata.mat contains data measured with
+T1-weighted simple spin-echo.
+
+
+
+reconstruction: sample code for VCC reconstruction.
+
+sample_recon_code.m: sample script to simulate acceleration using the sample datasets, and perform standard GRAPPA 
+and VCC-GRAPPA reconstruction. Should run "as is", with no further settings. However, number of ACS lines and some other 
+parameters can be set differently by the user.
+
+VCC_signal_creation.m: script for creating virtual coil signals, that could be used with any further reconstruction, e.g. VCC-GRAPPA. 
+
+grappa.m:  This is a teaching version of the GRAPPA reconstruction code for simple Cartesian acquisitions with constant
+undersampling density. This program uses a simple 2x9 kernel (tested for af=8) to reconstruct each missing point and uses
+a cyclic boundary assumption at the edges of k-space. The ACS lines used for reconstruction are NOT included in the final
+reconstructed dataset. g-factor maps are also calculated from reconstruction kernels. 
+Note that, this a simple, non-iterative GRAPPA, in contrast to the iterative GRAPPA used in the manuscript, which could not be
+made public due to copyright. However, the extension of this GRAPPA code  to iterative GRAPPA is quite straightforward based
+on the appropriate iGRAPPA paper (see T. Zhao et al. Magn Reson Med. 2008;59(4):903–907)
+
+phase_calculation: this folder contains the functions to calculate the optimal phase distributions for VCC-GRAPPA reconstruction
+based on a full prescan, and to design an appropriate RF pulse to introduce the optimal phase map; as they were used in the manuscript.
+
+OptimizedPhasePulseDesign2DSpiral.m: the main script that should run "as is" without further settings; however, there are some
+parameters that can be changed by the user. It loads the sample data and spiral gradient waveform, and calls the other functions
+to calculate optimal phase pattern and to design the RF pulse.
+
+optimal_phase_calculation.m: the code for calculating the optimal phase for a given acceleration factor in the given setup, 
+using a derivative-free simplex search.
+
+PhaseStepsMinimize.m: calculating the norm of phase gradient after separate phase shifts are added to overlapping voxels, 
+without the modification of SENSE g-factors. Used to search for a spatially smooth optimal phase map.
+
+gfactor.m: calculating SENSE g-factors based on coil sensitivity maps for a given overlapping voxel group.
+
+g_factor_cov_fun.m: calculating sum of squared VCC-SENSE g-factors based on coil sensitivity maps and object phase values
+of the overlapping voxel group. Used as a penalty function in the calculation of the optimal phase distribution.
+
+gradient_waveform.mat: predefined gradient waveforms for spiral trajectories.
+
+cMapEspirit.m: script to call the Matlab implementation of the ESPIRiT algorithm (original algorithm by Martin Uecker and 
+Michael Lustig, see M. Uecker et al. Magn Reson Med. 2014;71(3):990–1001)
+
+ESPIRiT folder: Matlab implementation and helping functions for ESPIRiT.
+
+
+
+Contributors
+============
+
+Contributors to this code, in the order of authorship in the corresponding manuscript:
+
+Adam Kettinger
+Department of Nuclear Techniques, Budapest University of Technology and Economics, Budapest, Hungary
+Brain Imaging Centre, Research Centre for Natural Sciences, Hungarian Academy of Sciences, Budapest, Hungary
+
+Stephan A. R. Kannengiesser
+Siemens Healthcare, GmbH, Erlangen, Germany
+
+Felix A. Breuer
+Magnetic Resonance and X-ray Imaging Department, Fraunhofer Development Center X-ray Technology (EZRT), Würzburg, Germany
+
+Martin Blaimer
+Magnetic Resonance and X-ray Imaging Department, Fraunhofer Development Center X-ray Technology (EZRT), Würzburg, Germany
+
+
+
+References
+==========
+
+The corresponding manuscript to this software:
+
+Kettinger AO, Kannengiesser SAR, Breuer FA, Vidnyanszky Z, Blaimer M. Controlling the object phase for g-factor reduction in
+phase-constrained parallel MRI using spatially selective RF pulses. submitted to Magnetic Resonance in Medicine.
+
+
+Additional references on the topic:
+
+Blaimer M, Gutberlet M, Kellman P, Breuer FA, Köstler H, Griswold MA. Virtual coil concept for improved parallel MRI employing
+conjugate symmetric signals. Magn Reson Med. 2009;61(1):93–102.
+
+Blaimer M, Choli M, Jakob PM, Griswold MA, Breuer FA. Multiband phase-constrained parallel MRI. Magn Reson Med. 2013;69(4):974–980.
