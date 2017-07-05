@@ -43,8 +43,8 @@ sample_data: sample datasets used in the manuscript (see References) .mat files 
 both files contain two k-space dataset as Matlab matrices. Dimension order is [PE, read, channel] in these datasets.
 One .mat file contains two k-space data: one measured with conventional excitation (kspace_conv), and one measured with
 tailored excitation to introduce the optimal object phase for in-plane acceleration factor 8 in the given setup (kspace_opt).
-SE-EPI_rawdata.mat contains data that was measured with a segmented SE-EPI, while T1wSE_rawdata.mat contains data measured with
-T1-weighted simple spin-echo.
+SE-EPI_rawdata.mat contains data that was measured with a segmented SE-EPI, while T1wSE_rawdata_conv.mat and T1wSE_rawdata_opt.mat
+contains data measured with T1-weighted simple spin-echo. (this latter is separated into 2 files for size limit)
 
 
 
